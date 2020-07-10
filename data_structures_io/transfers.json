@@ -1,0 +1,74 @@
+{
+    "url": "/transfer",
+    "summary": "To send transfers",
+    "requestBody": {
+        "description": "Create and send trasnfers to every country",
+        "required": true,
+        "content": {
+            "application/json": {
+                "required": [
+                    "transfers"
+                ],
+                "properties": {
+                    "transfers": {
+                        "type": "list",
+                        "schema": {
+                            "type": "dict",
+                            "schema": {
+                                "value": {
+                                    "type": "float"
+                                },
+                                "destination_bank_account": {
+                                    "type": "dict",
+                                    "schema": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "cpf_cnpj": {
+                                            "type": "string"
+                                        },
+                                        "bank_code": {
+                                            "type": "string"
+                                        },
+                                        "agency": {
+                                            "type": "string"
+                                        },
+                                        "account": {
+                                            "type": "string"
+                                        },
+                                        "account_digit": {
+                                            "type": "string"
+                                        },
+                                        "account_type": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "responses": {
+        "post": {
+            "200": {
+                "description": "Return with sucess",
+                "properties": {
+                    "data": {
+                        "type": "list",
+                        "schema": {
+                            "type": "dict",
+                            "schema": {
+                                "success": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,111 @@
+{
+   "openapi": "3.0.3",
+   "info": {
+      "version": "1.0.0",
+      "title": "AiqDocTests - AIQ aiqdoctests",
+      "description": "The Documentation using the aiqDocTest",
+      "contact": {
+         "name": "aiqdoctests",
+         "email": "dev@aiqfome.com"
+      },
+      "license": {
+         "name": "MIT",
+         "url": "https://opensource.org/licenses/MIT"
+      }
+   },
+   "host": "test.aiq.com",
+   "schemes": [
+      "http"
+   ],
+   "paths": {
+      "/transfer": {
+         "summary": "To send transfers",
+         "post": {
+            "requestBody": {
+               "description": "Create and send trasnfers to every country",
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "required": [
+                           "transfers"
+                        ],
+                        "properties": {
+                           "transfers": {
+                              "type": "array",
+                              "items": {
+                                 "type": "object",
+                                 "properties": {
+                                    "value": {
+                                       "type": "number",
+                                       "format": "double"
+                                    },
+                                    "destination_bank_account": {
+                                       "type": "object",
+                                       "properties": {
+                                          "name": {
+                                             "type": "string"
+                                          },
+                                          "cpf_cnpj": {
+                                             "type": "string"
+                                          },
+                                          "bank_code": {
+                                             "type": "string"
+                                          },
+                                          "agency": {
+                                             "type": "string"
+                                          },
+                                          "account": {
+                                             "type": "string"
+                                          },
+                                          "account_digit": {
+                                             "type": "string"
+                                          },
+                                          "account_type": {
+                                             "type": "string"
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Return with sucess",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "data": {
+                                 "type": "array",
+                                 "items": {
+                                    "type": "object",
+                                    "properties": {
+                                       "success": {
+                                          "type": "boolean"
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/health": {
+         "get": {
+            "responses": {}
+         }
+      }
+   }
+}

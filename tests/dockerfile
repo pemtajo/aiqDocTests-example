@@ -1,0 +1,17 @@
+FROM python:alpine
+
+# for run locally
+# COPY aiqdoctests.whl aiqdoctests.whl 
+# RUN pip3 install aiqdoctests.whl
+
+RUN pip3 install aiqDocTests
+
+WORKDIR aiqdoctests
+
+
+
+COPY . .
+
+COPY tests/.env.test docker/.env
+
+COPY .aiqdoctests.config .aiqdoctests.config

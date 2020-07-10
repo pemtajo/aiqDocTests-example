@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  aiqdoctests:
+    build: ../
+    container_name: dev-aiq-aiqdoctests
+    networks:
+      - aiq
+    ports:
+      - "6666:6666"
+    env_file:
+      - .env
+    volumes:
+      - ../:/aiqdoctests
+networks:
+  aiq:

@@ -1,0 +1,41 @@
+version: "3.7"
+services:
+  app:
+    build: ..
+    image: aiqdoctests
+    container_name: aiqdoctests
+    networks:
+      - tests-aiqddoctests
+    volumes:
+      - ../:/aiqdoctests
+    ports:
+      - "6666:6666"
+    env_file:
+      - .env.test
+  tests:
+    build:
+      context: ../
+      dockerfile: tests/dockerfile
+    command: sh -c "aiqdoctests -w --runTests --generateDoc"
+    image: tests-aiqdoctests
+    container_name: tests-aiqdoctests
+    depends_on:
+      - app
+    networks:
+      - tests-aiqddoctests
+    volumes:
+      - ../static/swagger.json:/aiqdoctests/static/swagger.json
+      - ../data_structures_io:/aiqdoctests/data_structures_io
+      - ../.aiqdoctests.config:/aiqdoctests/.aiqdoctests.config
+      - ../tests:/aiqdoctests/tests
+    environment:
+      - BASE_URL=http://aiqdoctests:6666
+      - WAIT_HOSTS=app:6666
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=5
+      - WAIT_HOST_CONNECT_TIMEOUT=30
+    env_file:
+      - .env.test
+
+networks:
+  tests-aiqddoctests:
