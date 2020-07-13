@@ -27,12 +27,12 @@ class tests(AiqTest):
         r = self.assertResponseStructure(
             HTTPStatus.NOT_FOUND.value,
             method='POST'
-        );
+        )
 
         jsonResponse = r.json()
 
         data = jsonResponse['data']
 
-        self.assertEqual(data['message'], 'File was not found.');
+        self.assertEqual(data['message'], 'File was not found.')
         self.assertTrue(len(data['files']) == 0)
         self.assertFalse(data['success'])
