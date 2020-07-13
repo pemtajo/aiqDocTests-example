@@ -13,9 +13,6 @@
                             },
                             "message": {
                                 "type": "string"
-                            },
-                            "files": {
-                                "type": "list"
                             }
                         }
                     }

@@ -1,14 +1,12 @@
 FROM python:alpine
 
 # for run locally
-# COPY aiqdoctests.whl aiqdoctests.whl 
-# RUN pip3 install aiqdoctests.whl
+#COPY aiqDocTests-1.4.0-py3-none-any.whl aiqDocTests-1.4.0-py3-none-any.whl
+#RUN pip3 install aiqDocTests-1.4.0-py3-none-any.whl
 
 RUN pip3 install aiqDocTests
 
 WORKDIR aiqdoctests
-
-
 
 COPY . .
 
