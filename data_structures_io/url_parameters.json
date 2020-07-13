@@ -1,0 +1,43 @@
+{
+    "url": "/parameters/{id}",
+    "summary": "To send parameters in URL.",
+    "responses": {
+        "get": {
+            "200": {
+                "description": "Return with sucess",
+                "properties": {
+                    "data": {
+                        "type": "dict",
+                        "schema": {
+                            "success": {
+                                "type": "boolean"
+                            },
+                            "id": {
+                                "type": "integer"
+                            },
+                            "type": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "400": {
+                "description": "Bad request.",
+                "properties": {
+                    "data": {
+                        "type": "dict",
+                        "schema": {
+                            "success": {
+                                "type": "boolean"
+                            },
+                            "message": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

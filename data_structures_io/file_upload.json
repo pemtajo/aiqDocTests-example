@@ -1,0 +1,42 @@
+{
+    "url": "/file-upload",
+    "responses": {
+        "post": {
+            "200": {
+                "description": "Return with sucess",
+                "properties": {
+                    "data": {
+                        "type": "dict",
+                        "schema": {
+                            "success": {
+                                "type": "boolean"
+                            },
+                            "message": {
+                                "type": "string"
+                            },
+                            "files": {
+                                "type": "list"
+                            }
+                        }
+                    }
+                }
+            },
+            "400": {
+                "description": "Bad request.",
+                "properties": {
+                    "data": {
+                        "type": "dict",
+                        "schema": {
+                            "success": {
+                                "type": "boolean"
+                            },
+                            "message": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
