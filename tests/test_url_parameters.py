@@ -15,7 +15,7 @@ class tests_url_parameters(AiqTest):
         r = self.assertResponseStructure(
             HTTPStatus.OK.value,
             parameters_url={"id": 1},
-            query_string={"type": "fool"},
+            query_params={"type": "fool"},
             headers={"Authorization": BASIC_AUTH},
         )
 
@@ -30,7 +30,7 @@ class tests_url_parameters(AiqTest):
     def test_without_url_parameters(self):
         r = self.assertResponseStructure(
             HTTPStatus.BAD_REQUEST.value,
-            query_string={"type": "fool"},
+            query_params={"type": "fool"},
             headers={"Authorization": BASIC_AUTH},
         )
 
