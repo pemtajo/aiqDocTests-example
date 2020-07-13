@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
 const express = require('express');
 const authController = require('./controllers/authController');
-const fileUploadController = require('./controllers/fileUploaController');
-const parametersUrlController = require('./controllers/parameterUrlController');
+const fileUploadController = require('./controllers/fileUploadController');
+const parametersUrlController = require('./controllers/parametersUrlController');
 const fileupload = require("express-fileupload");
 const app = express();
 
@@ -20,6 +20,6 @@ app.post('/transfer', authController.middlewareAuth, async (req, res) => {
 
 app.post('/file-upload', fileUploadController.store);
 
-app.post('/parameters/:id', authController.middlewareAuth, parametersUrlController);
+app.get('/parameters/:id', authController.middlewareAuth, parametersUrlController.index);
 
 app.listen(process.env.APPLICATION_PORT);

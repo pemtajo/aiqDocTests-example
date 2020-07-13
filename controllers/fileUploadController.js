@@ -25,8 +25,7 @@ module.exports = {
         return res.status(200).json({
             data: {
                 success: true,
-                message: 'Ok!',
-                files: req.files
+                message: 'Ok!'
             }
         });
     }
