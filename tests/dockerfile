@@ -4,7 +4,7 @@ FROM python:alpine
 # COPY aiqDocTests-1.6.0-py3-none-any.whl aiqDocTests-1.6.0-py3-none-any.whl
 # RUN pip3 install aiqDocTests-1.6.0-py3-none-any.whl
 
-# RUN pip3 install aiqDocTests
+RUN pip3 install aiqDocTests
 
 WORKDIR aiqdoctests
 
