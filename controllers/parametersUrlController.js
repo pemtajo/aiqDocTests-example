@@ -2,7 +2,7 @@
 
 module.exports = {
     async index(req, res) {
-        if (!req.params.id) {
+        if (!req.params.id || isNaN(req.params.id)) {
             return res.status(400).json({
                 'data': {
                     'message': 'URL parameter was not found.',
@@ -11,7 +11,7 @@ module.exports = {
             });
         }
 
-        if (!req.query.type) {
+        if (!req.query.type || Object.values(req.query.type) === 0) {
             return res.status(400).json({
                 'data': {
                     'message': 'Query parameter was not found.',
@@ -19,11 +19,11 @@ module.exports = {
                 }
             });
         }
-
+        
         return res.status(200).json({
             'data': {
                 'message': 'Ok!',
-                'id': req.params.id,
+                'id': parseInt(req.params.id),
                 'type': req.query.type,
                 'success': true
             }

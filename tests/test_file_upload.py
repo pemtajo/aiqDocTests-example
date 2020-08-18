@@ -3,6 +3,7 @@
 
 from http import HTTPStatus
 from aiqdoctests.structures import AiqTest
+import os
 
 
 class tests(AiqTest):
@@ -11,7 +12,8 @@ class tests(AiqTest):
         self.setStructure("file_upload")
 
     def test_happy_day(self):
-        files = {'uploaded_file': open('example_file.txt','rb')}
+        script_dir = os.path.dirname(__file__)
+        files = {'uploaded_file': open(script_dir + '/example_file.txt','rb')}
 
         r = self.assertOK(method='POST', files=files)
 
@@ -20,12 +22,11 @@ class tests(AiqTest):
         data = jsonResponse['data']
 
         self.assertEqual(data['message'], 'Ok!')
-        self.assertTrue(len(data['files']) > 0)
         self.assertTrue(data['success'])
 
     def test_without_files(self):
         r = self.assertResponseStructure(
-            HTTPStatus.NOT_FOUND.value,
+            HTTPStatus.BAD_REQUEST.value,
             method='POST'
         )
 
@@ -34,5 +35,4 @@ class tests(AiqTest):
         data = jsonResponse['data']
 
         self.assertEqual(data['message'], 'File was not found.')
-        self.assertTrue(len(data['files']) == 0)
         self.assertFalse(data['success'])
