@@ -16,7 +16,7 @@ services:
     build:
       context: ../
       dockerfile: tests/dockerfile
-    command: sh -c "aiqdoctests -w --runTests --generateDoc"
+    command: sh -c "aiqdoctests --runTests --generateDoc"
     image: tests-aiqdoctests
     container_name: tests-aiqdoctests
     depends_on:
