@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
 const authController = require('./controllers/authController');
 const fileUploadController = require('./controllers/fileUploadController');
 const parametersUrlController = require('./controllers/parametersUrlController');
@@ -9,6 +10,9 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(fileupload());
+
+const swaggerDocument = require('./static/swagger.json');
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/health', function (req, res) {
   res.json('Hello World! AiqdocTests-example');

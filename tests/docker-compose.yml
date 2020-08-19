@@ -9,7 +9,7 @@ services:
     volumes:
       - ../:/aiqdoctests
     ports:
-      - "6666:6666"
+      - "54321:54321"
     env_file:
       - .env.test
   tests:
@@ -24,13 +24,13 @@ services:
     networks:
       - tests-aiqddoctests
     volumes:
-      - ../static/swagger.json:/aiqdoctests/static/swagger.json
+      - ../static:/aiqdoctests/static
       - ../data_structures_io:/aiqdoctests/data_structures_io
       - ../.aiqdoctests.config:/aiqdoctests/.aiqdoctests.config
       - ../tests:/aiqdoctests/tests
     environment:
-      - BASE_URL=http://aiqdoctests:6666
-      - WAIT_HOSTS=app:6666
+      - BASE_URL=http://aiqdoctests:54321
+      - WAIT_HOSTS=app:54321
     env_file:
       - .env.test
 
