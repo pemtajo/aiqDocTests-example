@@ -1,8 +1,8 @@
 FROM python:alpine
 
 # for run locally
-# COPY aiqDocTests-1.6.0-py3-none-any.whl aiqDocTests-1.6.0-py3-none-any.whl
-# RUN pip3 install aiqDocTests-1.6.0-py3-none-any.whl
+# COPY aiqDocTests-1.7.1-py3-none-any.whl aiqDocTests-1.7.1-py3-none-any.whl
+# RUN pip3 install aiqDocTests-1.7.1-py3-none-any.whl
 
 RUN pip3 install aiqDocTests
 

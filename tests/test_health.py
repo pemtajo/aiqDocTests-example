@@ -4,11 +4,8 @@
 from aiqdoctests.structures import AiqTest
 
 
+@AiqTest.SetStructure("health")
 class tests(AiqTest):
-    def __init__(self, *args, **kws):
-        super().__init__(*args, **kws)
-        self.setStructure("health")
-
     def test_health(self):
         r = self.assertOK()
         self.assertEqual("Hello World! AiqdocTests-example", r.json())

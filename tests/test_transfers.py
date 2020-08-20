@@ -5,11 +5,8 @@ from aiqdoctests.structures import AiqTest
 from tests.helpers.constants import BASIC_AUTH
 
 
+@AiqTest.SetStructure("transfers")
 class tests_transfers(AiqTest):
-    def __init__(self, *args, **kws):
-        super().__init__(*args, **kws)
-        self.setStructure("transfers")
-
     def test_happy_day(self):
         payload = {
             "transfers": [

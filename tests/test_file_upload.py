@@ -6,33 +6,27 @@ from aiqdoctests.structures import AiqTest
 import os
 
 
+@AiqTest.SetStructure("file_upload")
 class tests(AiqTest):
-    def __init__(self, *args, **kws):
-        super().__init__(*args, **kws)
-        self.setStructure("file_upload")
-
     def test_happy_day(self):
         script_dir = os.path.dirname(__file__)
-        files = {'uploaded_file': open(script_dir + '/example_file.txt','rb')}
+        files = {"uploaded_file": open(script_dir + "/example_file.txt", "rb")}
 
-        r = self.assertOK(method='POST', files=files)
+        r = self.assertOK(method="POST", files=files)
 
         jsonResponse = r.json()
 
-        data = jsonResponse['data']
+        data = jsonResponse["data"]
 
-        self.assertEqual(data['message'], 'Ok!')
-        self.assertTrue(data['success'])
+        self.assertEqual(data["message"], "Ok!")
+        self.assertTrue(data["success"])
 
     def test_without_files(self):
-        r = self.assertResponseStructure(
-            HTTPStatus.BAD_REQUEST.value,
-            method='POST'
-        )
+        r = self.assertResponseStructure(HTTPStatus.BAD_REQUEST.value, method="POST")
 
         jsonResponse = r.json()
 
-        data = jsonResponse['data']
+        data = jsonResponse["data"]
 
-        self.assertEqual(data['message'], 'File was not found.')
-        self.assertFalse(data['success'])
+        self.assertEqual(data["message"], "File was not found.")
+        self.assertFalse(data["success"])

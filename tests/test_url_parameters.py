@@ -6,11 +6,8 @@ from aiqdoctests.structures import AiqTest
 from tests.helpers.constants import BASIC_AUTH
 
 
+@AiqTest.SetStructure("url_parameters")
 class tests_url_parameters(AiqTest):
-    def __init__(self, *args, **kws):
-        super().__init__(*args, **kws)
-        self.setStructure("url_parameters")
-
     def test_happy_day(self):
         r = self.assertResponseStructure(
             HTTPStatus.OK.value,
