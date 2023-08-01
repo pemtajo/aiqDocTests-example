@@ -16,7 +16,7 @@
   "homepage": "https://bitbucket.org/aiqfomedevteam/aiqdoctests#readme",
   "dependencies": {
     "@types/axios": "^0.14.0",
-    "@types/body-parser": "^1.19.0",
+    "@types/body-parser": "^1.19.2",
     "@types/express": "^4.17.7",
     "@types/redis": "^2.8.25",
     "@types/swagger-ui-express": "^4.1.2",
